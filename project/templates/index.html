@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+     <title>lung app</title>
+     {% assets "css_admin" %}
+         <link rel="stylesheet" href="{{ASSET_URL}}" />
+     {% endassets %}
+     <!--
+     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/mainpage.css') }}">
+     -->
+     
+    </head>
+    <body>
+        <h1 > hello</h1>
+        
+     
+        {% assets "js_all" %}
+        <script src="{{ASSET_URL}}"></script>
+        {% endassets %}
+        <!--
+        <script src="{{url_for('static', filename='js/query.js')}}"></script>
+        <script src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
+        <script src="{{url_for('static', filename='js/fontawesome.min.js')}}"></script>
+        <script src="{{url_for('static', filename='js/all.min.js')}}"></script>
+       -->
+    </body>
+</html>
