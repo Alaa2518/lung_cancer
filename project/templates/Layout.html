@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8"></meta>
+    
+    <title>lung app</title>
+    {% assets "css_admin" %}
+    <link rel="stylesheet" href="{{ASSET_URL}}" />
+    {% endassets %}
+    
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/style.css') }}">
+    
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="http://127.0.0.1:5000/">Lung Cancer</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="http://127.0.0.1:5000/">Home</a>
+                    </li>
+                    <!-- user -->
+                    
+                    {% if 'user' in session %}
+                        
+                        {% if session['user']==2%}
+                            <li class="nav-item">
+                                
+                                <a class="nav-link" href="http://127.0.0.1:5000/serves">Serves</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="http://127.0.0.1:5000/addFeedback">Feedback</a>
+                            </li>
+                        {% elif session['user']==1%} 
+                        
+                            <!-- addmin-->
+                            <li class="nav-item">
+                                <a class="nav-link" href="http://127.0.0.1:5000/viewFeedback">Feedback</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="http://127.0.0.1:5000/viewUsers">View Users</a>
+                            </li>
+                        {% endif %}
+                    {% endif %}
+                    <!-- general  -->
+                    {% if 'user' in session %} 
+                        <li class="nav-item">
+                            <a class="nav-link" href="http://127.0.0.1:5000/viewProfile">Profile</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="http://127.0.0.1:5000/Logout">Logout</a>
+                        </li>
+                    {% else %} 
+                        <li class="nav-item">
+                            <a class="nav-link" href="http://127.0.0.1:5000/Login">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="http://127.0.0.1:5000/Register">Register</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+    {% block content %}
+
+    {% endblock %}
+
+    <nav class="navbar fixed-bottom navbar-expand-sm navbar-dark bg-info text-white text-center" style="margin-left:auto;margin-right:auto;">
+        <div class="container-fluid" >
+            <div calss="text-muted ">CopyRight &copy; 2021 All rights Reserved</div>
+            
+            
+        </div>
+    </nav>
+    </div>
+    {% assets "js_all" %}
+    <script src="{{ASSET_URL}}"></script>
+    {% endassets %}
+    <!--
+        <script src="{{url_for('static', filename='js/query.js')}}"></script>
+        <script src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
+        <script src="{{url_for('static', filename='js/fontawesome.min.js')}}"></script>
+        <script src="{{url_for('static', filename='js/all.min.js')}}"></script>
+    -->
+</body>
+
+</html>

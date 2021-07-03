@@ -1,0 +1,47 @@
+{% extends "Layout.html" %}
+
+{% block content %}
+
+<div class="container-xl">
+    <div class="table-responsive">
+        <div class="table-wrapper">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-5">
+                        <h2>User <b>Management</b></h2>
+                    </div>
+
+                </div>
+            </div>
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>user messeg </th>
+                        <th>Date Created</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for feedback in feedbacks%}
+                    <tr>
+                        <td>{{feedback.id}}</td>
+                        <td>{{feedback.commint}}</td>
+                        <td>{{feedback.dateCreated}}</td>
+                        
+                    </tr>
+                    {% endfor%}
+
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () { $('[data-toggle="tooltip"]').tooltip(); });
+</script>
+
+
+
+{% endblock%}

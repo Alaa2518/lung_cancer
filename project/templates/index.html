@@ -1,27 +1,65 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-     <title>lung app</title>
-     {% assets "css_admin" %}
-         <link rel="stylesheet" href="{{ASSET_URL}}" />
-     {% endassets %}
-     <!--
-     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/mainpage.css') }}">
-     -->
-     
-    </head>
-    <body>
-        <h1 > hello</h1>
-        
-     
-        {% assets "js_all" %}
-        <script src="{{ASSET_URL}}"></script>
-        {% endassets %}
-        <!--
-        <script src="{{url_for('static', filename='js/query.js')}}"></script>
-        <script src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
-        <script src="{{url_for('static', filename='js/fontawesome.min.js')}}"></script>
-        <script src="{{url_for('static', filename='js/all.min.js')}}"></script>
-       -->
-    </body>
-</html>
+{% extends "Layout.html" %}
+
+{% block content %}
+<div class="container" style="height:1500px">
+  <div class="row" style="height:500px;margin-top:20px">
+    <div class="col-sm-6 float-left card-info-style" style="padding:100px 50px 0 0 ;border-radius: 2%;">
+        <h1 style="margin: 20px 0;color: #202020;">Our Servise</h1>
+        <div>
+        <p style="color: #3d3d3d; width: 40%;margin: 10px 0;">Our System for lung cancer classification</p>
+        </div>
+        <div>
+          <p style="color: #3d3d3d; width: 60%;margin: 10px 0;">Good health is not something we can buy. However, it can be an extremely valuable savings account.”-Anne Wilson Schaef</p>
+          <p style="color: #3d3d3d; width: 60%;margin: 10px 0;">“You can’t control what goes on outside, but you CAN control what goes on inside.” – Unknown</p>
+        </div>
+      
+    </div>
+    <div class="col-sm-6 float-right">
+      <img src="{{ url_for('static',filename='img/Lung-cancer.png') }}" class="img-fluid float-right" alt="Responsive image" style="width:400px;height:450px;border-radius:7%;">
+  
+    </div>
+      </div>
+  <div class="row" style="height:500px">
+    <div class="col-sm-6 float-left">
+      <img src="{{ url_for('static',filename='img/doctor.jpg') }}" class="img-fluid float-left" alt="Responsive image" style="width:400px;height:450px;border-radius:7%;">
+    </div>
+    <div class="col-sm-6 float-right card-info-style" style="padding:100px 50px 0 0 ;border-radius: 2%;">
+       <h1 style="margin: 20px 0;color: #202020;">About Us</h1>
+       <div>
+         <p style="color: #3d3d3d; width: 40%;margin: 10px 0;">we are team in FCAIH , we make this system to for helping doctors in every way to classify the lung cancer</p>
+       </div>
+      <div>
+        <p style="color: #3d3d3d; width: 60%;margin: 10px 0;">“Keeping your body healthy is an expression of gratitude to the whole cosmos- the trees, the clouds, everything.” –
+        Thich Nhat Hanh</p>
+        <p style="color: #3d3d3d; width: 60%;margin: 10px 0;">“Divide each difficulty into as many parts as is feasible and necessary to resolve it, and watch the whole transform.” –
+        Rene Descartes “Every negative belief weakens the partnership between mind and body.” – Deepak Chopra</p>
+      </div>
+    </div>
+  
+   </div>
+  <div class="row" style="height:500px;">
+         <div class="col-sm-12 " >
+       <h1 style="margin: 20px 0;color: #202020;">Easy Steps</h1>
+       <div>
+          <p style="color: #3d3d3d; width: 40%;margin: 10px 0;">How to use the system</p>
+        </div>
+        <div>
+        <ul class="list-group">
+            <li class="list-group-item active">login or register</li>
+            <li class="list-group-item">click the serves </li>
+           <li class="list-group-item">upload the CT Scan</li>
+           <li class="list-group-item">show the reslute </li>
+          <li class="list-group-item">thank you for using the our system </li>
+            
+          </ul>
+        </div>
+        <div>
+          <p style="color: #3d3d3d; width: 80%;margin: 10px 0;">“Health is a state of complete mental, social and physical well-being, not merely the absence of disease or infirmity.”
+          – World Health Organization, 1948</p>
+        </div>
+      
+    </div>
+   </div>
+</div>
+
+{% endblock%}
