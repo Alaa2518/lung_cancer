@@ -2,18 +2,18 @@
 
 {% block content %}
 <div style="width:500px;margin-left:auto;margin-right:auto;" >
-    <form action="action="http://127.0.0.1:5000/Login" method="POST">
+    <form action="http://127.0.0.1:5000/Login" method="POST">
         <div class="form-group">
             <h2 class="text-center">Log in</h2>
         </div>
         <div class="form-group">
             <label for="email">Email address</label>
-            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" name="email">
             <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
         </div>
         <div class="form-group">
             <label for="password">Password</label>
-            <input type="password" class="form-control" id="password" placeholder="Password">
+            <input type="password" class="form-control" id="password" placeholder="Password" name="password">
         </div>
         
         <button type="submit" class="btn btn-primary btn-block">Login</button>

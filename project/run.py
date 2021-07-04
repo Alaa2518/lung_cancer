@@ -4,7 +4,6 @@ from flask_migrate import Migrate
 from flask_assets import Environment, Bundle
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
-
 from controllers import *
 from werkzeug.utils import secure_filename
 import os
@@ -52,15 +51,17 @@ def index():
 @app.route('/Login',methods=['GET', 'POST'])
 def Login():
     if request.method == 'POST':
-        email = request.form.get('email')
-        password = request.form.get('password')
+        email = request.form['email']
+        password = request.form['password']
         user = models.user.query.filter_by(email=email).first()
+        
         if not user or not check_password_hash(user.password, password):
             flash('Please check your login details and try again.')
-            return redirect("/Login")
+            return redirect(url_for("Login"))
         else: 
-            session['user'] = user
-            return redirect("/index")
+            session['User_type'] = user.User_type
+            session['user_id'] = user.id
+            return redirect(url_for("index"))
     return render_template('Login.html')
 
 #Register function
@@ -71,24 +72,52 @@ def Register():
                             last_name=request.form["lastName"], email=request.form["Email"], password=generate_password_hash(request.form["password"], method='sha256'), User_type=2)
         db.session.add(user)
         db.session.commit()
-        session['user']= user
-        return render_template('index.html')
-        
+        session['User_type'] = user.User_type
+        session['user_id'] = user.id
+        return redirect(url_for("/index"))
+            
     return render_template('Register.html')
 
 #view function
 @app.route('/viewProfile',methods=['GET', 'POST'])
 def viewProfile():
-    user_update = models.user.query.filter_by(id= session['user'].get("id"))
+    id = session['user_id']
+    profile = models.user.query.get_or_404(id)
     if request.method == 'POST':
-        user_update.username = request.form["username"]
-        user_update.first_name = request.form["firstName"]
-        user_update.last_name = request.form["lastName"]
-        user_update.email = request.form["email"]
-        user_update.password = generate_password_hash(request.form["password"], method='sha256')
+        profile.id = profile.id
+        profile.User_type = profile.User_type
+        if request.form["username"] != '':
+            profile.username = request.form["username"]
+        else:
+            profile.username = profile.username
+
+        if request.form["username"] != '':
+            profile.first_name = request.form["firstName"]
+        else:
+            profile.first_name = profile.first_name
+
+        if request.form["username"] != '':
+            profile.last_name = request.form["lastname"]
+        else:
+            profile.last_name = profile.last_name
+
+        if request.form["username"] != '':
+            profile.email = request.form["email"]
+        else:
+            profile.email = profile.email
+
+        if request.form["username"] != '':
+            profile.password = generate_password_hash(request.form["password"], method='sha256')
+        else:
+            profile.password =profile.password
         db.session.commit()
-        return redirect("/index")
-    return render_template('viewProfile.html', profile=user_update)
+        return redirect( url_for("index"))
+    return render_template('viewProfile.html', profile=profile)
+
+#view function
+
+
+
 
 #view for admin function
 @app.route('/viewUsers',methods=['GET', 'POST'])
@@ -100,7 +129,7 @@ def viewUsers():
 @app.route('/addFeedback',methods=['GET', 'POST'])
 def addFeedback():
     if request.method == 'POST':
-        feedback = models.feedback(user_id=session['user'].get("id"), comment=request.form['comment'], Date = datetime.now())
+        feedback = models.feedback(user_id=session['user_id'], comment=request.form['comment'], Date=datetime.now())
         db.session.add(feedback)
         db.session.commit()
         return render_template('index.html')
@@ -115,18 +144,20 @@ def viewFeedback():
 #logout function 
 @app.route('/Logout',methods=['GET', 'POST'])
 def Logout():
-    session.pop('user',None)
+    session.pop('user_id', None)
+    session.pop("User_type", None)
     return render_template('index.html')
 
 
 # delete user 
 @app.route('/delete/<int:id>', methods=['GET', 'POST'])
 def delete(id):
-    user_delete = models.user.query.filter_by(id=id)
+    user_delete = models.user.query.get_or_404(id)
+    # models.user.query.filter_by(id = id).delete()
     db.session.delete(user_delete)
     db.session.commit()
     return redirect("/viewUsers")
-# user = models.user.query.filter_by(id=id).first()
+
 #service function
 @app.route('/service',methods=['GET', 'POST'])
 def service():
@@ -146,13 +177,13 @@ def uploader():
             return redirect(request.url)
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
-            CT = models.CT_scan(user_idimage_path=filename)
+            CT = models.CT_scan(image_path=file.filename)
             db.session.add(CT)
             db.session.commit()
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             filepath = app.config['UPLOAD_FOLDER'] + filename
             re = Read_all.ReadAll(filepath)
-            return render_template('service.html',afile=re)
+            return render_template('service.html')
         
     return render_template('service.html')
 

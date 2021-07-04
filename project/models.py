@@ -12,11 +12,11 @@ class user(db.Model):
 class feedback(db.Model): 
     #coulmns
     id = db.Column(db.Integer, primary_key= True,autoincrement=True)
-    user_id= db.Column(db.Integer,primary_key=True,nullable=False)
+    user_id= db.Column(db.Integer,primary_key=False,nullable=False)
     comment = db.Column('Comment',db.String(150),nullable=True)
     Date  = db.Column('Date',db.DateTime,nullable=False)
 
 class CT_scan(db.Model): 
     #coulmns
-    id = db.Column(db.Integer, primary_key= True,autoincrement=False)
-    image_path = db.Column('path',db.String(150),nullable=False)
+    id = db.Column(db.Integer, primary_key= True,autoincrement=True)
+    image_path = db.Column('image_path', db.String(150), nullable=False)

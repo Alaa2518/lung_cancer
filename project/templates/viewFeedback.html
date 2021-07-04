@@ -8,7 +8,7 @@
             <div class="table-title">
                 <div class="row">
                     <div class="col-sm-5">
-                        <h2>User <b>Management</b></h2>
+                        <h2>Feedback <b>Management</b></h2>
                     </div>
 
                 </div>
@@ -26,8 +26,8 @@
                     {% for feedback in feedbacks%}
                     <tr>
                         <td>{{feedback.id}}</td>
-                        <td>{{feedback.commint}}</td>
-                        <td>{{feedback.dateCreated}}</td>
+                        <td>{{feedback.comment}}</td>
+                        <td>{{feedback.Date}}</td>
                         
                     </tr>
                     {% endfor%}

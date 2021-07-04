@@ -5,7 +5,7 @@
 <div class="container" style="margin-bottom: 100px;">
   <div class="row">
     <div class="col-md-10 ">
-      <form class="form-horizontal" action="http://172.0.0.1:5000/viewProfile" method="POST">
+      <form class="form-horizontal" action="http://127.0.0.1:5000/viewProfile" method="POST">
       <fieldset>  
             <!-- Form Name -->
             <legend>User profile form requirement</legend>
@@ -23,7 +23,7 @@
           </div>
           <!-- Text input-->
           <div class="form-group">
-            <label class="col-md-4 control-label" for="lastname">Last name</label>  
+            <label class="col-md-4 control-label" for="lastname">Last name </label>  
             <div class="col-md-4">
               <div class="input-group">
                   <div class="input-group-addon">
@@ -42,7 +42,7 @@
                       <i class="fa fa-female" style="font-size: 20px;"></i>
                     
                   </div>
-                  <input id="userName" name="userName" type="text" placeholder="user Name" class="form-control input-md" value="{{profile.username}}">
+                  <input id="userName" name="username" type="text" placeholder="user Name" class="form-control input-md" value="{{profile.username}}">
               </div>
               
             </div>
@@ -70,7 +70,7 @@
                   <i class="fa fa-key" style="font-size: 20px;"></i>
                   
                 </div>
-                <input id="password" name="password" type="text" placeholder="Password" class="form-control input-md" value="{{profile.password}}">
+                <input id="password" name="password" type="text" placeholder="Password" class="form-control input-md" >
               </div>
             </div>
           </div>

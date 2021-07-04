@@ -28,9 +28,9 @@
                     </li>
                     <!-- user -->
                     
-                    {% if 'user' in session %}
+                    {% if 'User_type' in session %}
                         
-                        {% if session['user'].get('id') ==2%}
+                        {% if session['User_type'] ==2%}
                             <li class="nav-item">
                                 
                                 <a class="nav-link" href="http://127.0.0.1:5000/service">Service</a>
@@ -38,7 +38,7 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="http://127.0.0.1:5000/addFeedback">Feedback</a>
                             </li>
-                        {% elif session['user'].get('id')==1%} 
+                        {% elif session['User_type']==1%} 
                         
                             <!-- addmin-->
                             <li class="nav-item">
@@ -50,7 +50,7 @@
                         {% endif %}
                     {% endif %}
                     <!-- general  -->
-                    {% if 'user' in session %} 
+                    {% if 'User_type' in session %} 
                         <li class="nav-item">
                             <a class="nav-link" href="http://127.0.0.1:5000/viewProfile">Profile</a>
                         </li>
