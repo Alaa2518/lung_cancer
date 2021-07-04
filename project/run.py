@@ -84,6 +84,7 @@ def Register():
 def viewProfile():
     id = session['user_id']
     profile = models.user.query.get_or_404(id)
+    
     if request.method == 'POST':
         profile.id = profile.id
         profile.User_type = profile.User_type
@@ -151,13 +152,14 @@ def Logout():
 
 
 # delete user 
-@app.route('/delete/<int:id>', methods=['GET', 'POST'])
-def delete(id):
-    user_delete = models.user.query.get_or_404(id)
-    models.user.query.filter_by(id = id).delete()
-    db.session.delete(user_delete)
+@app.route('/delete/<int:Id>', methods=['GET', 'POST'])
+def delete(Id):
+    # user_delete = models.user.query.get_or_404(Id)
+    # models.user.query.filter_by(id =Id).delete()
+    # db.session.delete(user_delete)
+    db.session.query(models.user).filter(models.user.id == Id).delete()
     db.session.commit()
-    return redirect("/viewUsers")
+    return redirect(url_for('viewUsers'))
 
 #service function
 @app.route('/service',methods=['GET', 'POST'])
@@ -183,7 +185,7 @@ def uploader():
             db.session.commit()
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             filepath = app.config['UPLOAD_FOLDER'] + filename
-            # re = Read_all.ReadAll(filepath)
+            re = Read_all.ReadAll(filepath)
             return render_template('service.html')
         
     return render_template('service.html')
