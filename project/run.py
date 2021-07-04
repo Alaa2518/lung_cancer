@@ -154,7 +154,7 @@ def Logout():
 @app.route('/delete/<int:id>', methods=['GET', 'POST'])
 def delete(id):
     user_delete = models.user.query.get_or_404(id)
-    # models.user.query.filter_by(id = id).delete()
+    models.user.query.filter_by(id = id).delete()
     db.session.delete(user_delete)
     db.session.commit()
     return redirect("/viewUsers")
@@ -183,7 +183,7 @@ def uploader():
             db.session.commit()
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             filepath = app.config['UPLOAD_FOLDER'] + filename
-            re = Read_all.ReadAll(filepath)
+            # re = Read_all.ReadAll(filepath)
             return render_template('service.html')
         
     return render_template('service.html')
