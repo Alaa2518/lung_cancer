@@ -5,8 +5,8 @@
 <div class="container" style="margin-bottom: 100px;">
   <div class="row">
     <div class="col-md-10 ">
-      <form class="form-horizontal">
-        <fieldset>  
+      <form class="form-horizontal" action="http://172.0.0.1:5000/viewProfile" method="POST">
+      <fieldset>  
             <!-- Form Name -->
             <legend>User profile form requirement</legend>
             <!-- Text input-->
@@ -17,7 +17,7 @@
                     <div class="input-group-addon">
                       <i class="fa fa-user"></i>
                     </div>
-                      <input id="firstName" name="firstName" type="text" placeholder="first name" class="form-control input-md">
+                      <input id="firstName" name="firstName" type="text" placeholder="first name" class="form-control input-md" value="{{profile.first_name}}">
                   </div>
               </div>
           </div>
@@ -29,7 +29,7 @@
                   <div class="input-group-addon">
                         <i class="fa fa-male" style="font-size: 20px;"></i>
                   </div>
-                  <input id="lastname" name="lastname" type="text" placeholder="lastname" class="form-control input-md">
+                  <input id="lastname" name="lastname" type="text" placeholder="lastname" class="form-control input-md" value="{{profile.last_name}}">
               </div>
             </div>
           </div>
@@ -42,7 +42,7 @@
                       <i class="fa fa-female" style="font-size: 20px;"></i>
                     
                   </div>
-                  <input id="userName" name="userName" type="text" placeholder="user Name" class="form-control input-md">
+                  <input id="userName" name="userName" type="text" placeholder="user Name" class="form-control input-md" value="{{profile.username}}">
               </div>
               
             </div>
@@ -55,7 +55,7 @@
                 <div class="input-group-addon">
                   <i class="fa fa-envelope-o"></i> 
                 </div>
-                <input id="email" name="email" type="text" placeholder="email " class="form-control input-md">
+                <input id="email" name="email" type="text" placeholder="email " class="form-control input-md" value="{{profile.email}}">
               
             </div>
             
@@ -70,7 +70,7 @@
                   <i class="fa fa-key" style="font-size: 20px;"></i>
                   
                 </div>
-                <input id="password" name="password" type="text" placeholder="Password" class="form-control input-md">
+                <input id="password" name="password" type="text" placeholder="Password" class="form-control input-md" value="{{profile.password}}">
               </div>
             </div>
           </div>
