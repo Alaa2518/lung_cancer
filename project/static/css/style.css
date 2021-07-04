@@ -200,3 +200,21 @@ table.table .avatar {
     margin-top: 10px;
     font-size: 13px;
 }
+/* information style */
+.info-color{
+    margin:20px 0;
+    padding:20px 5px;
+    background-color: #dce4ec;
+    font-family: 'Times New Roman', Times, serif; 
+    font-size:20px;
+    border-radius: 30px;
+    font-style:italic;
+    color:rgb(57, 57, 75);
+    
+}
+
+.info-color span{
+    color: #35087e;
+    font-style:italic;
+}
+        

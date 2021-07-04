@@ -4,7 +4,7 @@ from flask_migrate import Migrate
 from flask_assets import Environment, Bundle
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
-from controllers import *
+# from controllers import *
 from werkzeug.utils import secure_filename
 import os
 import cv2
@@ -82,8 +82,11 @@ def Register():
 #view function
 @app.route('/viewProfile',methods=['GET', 'POST'])
 def viewProfile():
-    id = session['user_id']
-    profile = models.user.query.get_or_404(id)
+    ID = session['user_id']
+    # profile = models.user.query.get_or_404(id)
+    profile = models.user.query.filter_by(id = ID).first()
+    # profile = models.user.query.get(ID)
+
     
     if request.method == 'POST':
         profile.id = profile.id
@@ -112,7 +115,9 @@ def viewProfile():
             profile.password = generate_password_hash(request.form["password"], method='sha256')
         else:
             profile.password =profile.password
-        db.session.commit()
+        # db.session.add(profile)
+        if db.session.commit:            
+            db.session.commit()
         return redirect( url_for("index"))
     return render_template('viewProfile.html', profile=profile)
 
@@ -185,7 +190,7 @@ def uploader():
             db.session.commit()
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             filepath = app.config['UPLOAD_FOLDER'] + filename
-            re = Read_all.ReadAll(filepath)
+            # re = Read_all.ReadAll(filepath)
             return render_template('service.html')
         
     return render_template('service.html')

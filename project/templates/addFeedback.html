@@ -2,16 +2,17 @@
 
 {% block content %}
 
-<div style="width:750px;margin-left:auto;margin-right:auto;">
-    <div>
+<div style="width:900px;margin-left:auto;margin-right:auto;">
+    <div class = "info-color fst-italic text-center lh-base" >
         <p>“The doctor of the future will give no medicine, but will instruct his patients in care of the human frame, in diet, and
-        in the cause and prevention of disease.” – Thomas Edison</p>
+        in the cause and prevention of disease.” <span class="fs-3 text-decoration-underline"> Thomas Edison</span></p>
     </div>
-    <form action="http://127.0.0.1:5000/addFeedback" method="POST">
-        <h2 class="text-center">Send our feedback</h2>
+   
+    <form action="http://127.0.0.1:5000/addFeedback" method="POST" style="margin-bottom: 50px;margin-top:70px;" >
+        <h2 class="text-center text-uppercase" style="margin-bottom: 30px;margin-top:50px;">Send  your feedback</h2>
         <div class="form-group row">
 
-            <label for="firstName" class="col-sm-2 col-form-label">your commint</label>
+            <label for="firstName" class="col-sm-2 col-form-label text-uppercase">your comment</label>
             <div class="col-sm-10">
                 
                 <textarea class="form-control" name="comment" placeholder="feedback" id="feedback"></textarea>
@@ -24,23 +25,17 @@
             </div>
         </div>
     </form>
-    <div>
-        <p>“I have chosen to be happy because it is good for my health.” – Voltaire</p>
+    
+    <div class = "info-color fst-italic text-center lh-base">
+        <p>“A sad soul can be just as lethal as a germ.” <span class="fs-3 text-decoration-underline"> John Steinbeck </span></p>
     </div>
-    <div>
-        <p>“A sad soul can be just as lethal as a germ.” – John Steinbeck</p>
+    
+    <div class = "info-color fst-italic text-center lh-base">
+        <p>“A good laugh and a long sleep are the best cures in the doctor’s book.” <span class="fs-3 text-decoration-underline"> Irish proverb </span></p>
     </div>
-    <div>
-        <p>“If you know the art of deep breathing, you have the strength, wisdom and courage of ten tigers.” – Chinese adage</p>
-    </div>
-    <div>
-    <p>“Remain calm, because peace equals power.”- Joyce Meyer</p>
-    </div>
-    <div>
-    <p>“Healthy citizens are the greatest asset any country can have.” – Winston Churchill</p>
-    </div>
-    <div>
-        <p>“A good laugh and a long sleep are the best cures in the doctor’s book.” – Irish proverb</p>
+    <div class="info-color fst-italic text-center lh-base">
+        <p>“I have chosen to be happy because it is good for my health.” <span
+                class="fs-3 text-decoration-underline">Voltaire </span></p>
     </div>
 </div>
 

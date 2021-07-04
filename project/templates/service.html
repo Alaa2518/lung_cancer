@@ -2,13 +2,20 @@
 
 {% block content %}
 
-<div style="width:750px;margin-left:auto;margin-right:auto;">
-    <form action="http://127.0.0.1:5000/uploader" method="POST" enctype = "multipart/form-data">
-        <h2 class="text-center">Upload CT Scan</h2>
-        <div class="form-group">
-            <label class="col-md-4 control-label" for="file">Upload CT Scan</label>
-            <div class="col-md-4">
-                <input id="file" name="file" class="input-file" type="file">
+<div style="width:900px;margin-left:auto;margin-right:auto;">
+    <div class="info-color fst-italic text-center lh-base">
+        <p>“If you know the art of deep breathing, you have the strength, wisdom and courage of ten tigers.” <span
+                class="fs-3 text-decoration-underline"> Chinese adage </span></p>
+    </div>
+    <div class="info-color fst-italic text-center lh-base">
+        <p>“Remain calm, because peace equals power.”<span class="fs-3 text-decoration-underline"> Joyce Meyer </span></p>
+    </div>
+    <form action="http://127.0.0.1:5000/uploader" method="POST" enctype = "multipart/form-data" style="margin-top:50px ;margin-bottom:30px">
+        <h2 class="text-center text-uppercase" style="margin-top:20px ;margin-bottom:40px">Upload CT Scan</h2>
+        <div class="form-group row ">
+            <label class="col-md-3 control-label text-uppercase " for="file">Chose File of type dcm</label>
+            <div class="col-md-4 btn btn-secondary btn-lg">
+                <input id="file" name="file" class="input-file" type="file" class="btn btn-secondary">
             </div>
         </div>
         <div class="form-group row">
@@ -17,18 +24,24 @@
             </div>
         </div>
     </form>
+    
+    
+    
 </div>
 
-<div class="container">
-    <div class="row">
-        <h3 class="col-sm-12">Result {{file}}</h3>
+<div class="container" style="width:900px;margin-left:auto;margin-right:auto;min-height:500px;margin-top: 50px; margin-bottom:30px ">
+    <div class="row text-center">
+        <h3 class="col-sm-12 text-uppercase" style="border: 1px solid rgb(175, 175, 175);padding:10px ; border-radius:7px">Result </h3>
         
 
     </div>
-    <div class="row">
+    <div class="row" style="min-height:300px;">
         <div class="col-sm-12">class A</div>
     </div>
-
+    <div class="info-color fst-italic text-center lh-base">
+        <p>“Healthy citizens are the greatest asset any country can have.” <span class="fs-3 text-decoration-underline">
+                Winston Churchill </span></p>
+    </div>
 </div>
 
 
