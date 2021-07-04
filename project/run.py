@@ -68,13 +68,14 @@ def Login():
 @app.route('/Register',methods=['GET', 'POST'])
 def Register():
     if request.method == 'POST':
-        user = models.user(username=request.form["userName"], first_name=request.form["firstName"],
-                            last_name=request.form["lastName"], email=request.form["Email"], password=generate_password_hash(request.form["password"], method='sha256'), User_type=2)
-        db.session.add(user)
-        db.session.commit()
-        session['User_type'] = user.User_type
-        session['user_id'] = user.id
-        return redirect(url_for("/index"))
+        if request.form["userName"] != '' and request.form["firstName"] != '' and request.form["lastName"] != '' and request.form["Email"] != '' and request.form["password"] !='':
+            user = models.user(username=request.form["userName"], first_name=request.form["firstName"],
+                                last_name=request.form["lastName"], email=request.form["Email"], password=generate_password_hash(request.form["password"], method='sha256'), User_type=2)
+            db.session.add(user)
+            db.session.commit()
+            session['User_type'] = user.User_type
+            session['user_id'] = user.id
+            return redirect(url_for("/index"))
             
     return render_template('Register.html')
 
