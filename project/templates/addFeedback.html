@@ -25,18 +25,16 @@
             </div>
         </div>
     </form>
-    
+    <h2 class="text-center text-uppercase" style="margin-bottom: 30px;margin-top:50px;">Users' feedback</h2>
+    {% for feedback in feedbacks%}
     <div class = "info-color fst-italic text-center lh-base">
-        <p>“A sad soul can be just as lethal as a germ.” <span class="fs-3 text-decoration-underline"> John Steinbeck </span></p>
+        <p>{{feedback.comment}}</p>
     </div>
     
-    <div class = "info-color fst-italic text-center lh-base">
-        <p>“A good laugh and a long sleep are the best cures in the doctor’s book.” <span class="fs-3 text-decoration-underline"> Irish proverb </span></p>
-    </div>
-    <div class="info-color fst-italic text-center lh-base">
-        <p>“I have chosen to be happy because it is good for my health.” <span
-                class="fs-3 text-decoration-underline">Voltaire </span></p>
-    </div>
+    {% endfor%}
+
+    
+    
 </div>
 
 

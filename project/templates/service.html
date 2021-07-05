@@ -36,7 +36,18 @@
 
     </div>
     <div class="row" style="min-height:300px;">
-        <div class="col-sm-12">class A</div>
+        {% if result == 0  %}
+            <div class="col-sm-12" style="color: rgba(41, 41, 43, 0.87); font-size:25px;"> Adenocarcinoma</div>
+        {% elif result == 1 %}
+            <div class="col-sm-12" style="color: rgba(41, 41, 43, 0.87); font-size:25px;"> Small Cell Carcinoma</div>
+        {% elif result == 2 %}
+            <div class="col-sm-12" style="color: rgba(41, 41, 43, 0.87); font-size:25px;"> Large Cell Carcinoma </div>
+        {% elif result == 3 %}
+            <div class="col-sm-12" style="color: rgba(41, 41, 43, 0.87); font-size:25px;"> Squamous Cell Carcinoma </div>
+        {% else %}
+            <div class="col-sm-12" style="color: rgba(201, 15, 15, 0.87); font-size:30px">you dont have result or the result not  compatible </div>
+        {% endif %}
+
     </div>
     <div class="info-color fst-italic text-center lh-base">
         <p>“Healthy citizens are the greatest asset any country can have.” <span class="fs-3 text-decoration-underline">

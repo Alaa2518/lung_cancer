@@ -4,7 +4,7 @@ from flask_migrate import Migrate
 from flask_assets import Environment, Bundle
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
-# from controllers import *
+from controllers import *
 from werkzeug.utils import secure_filename
 import os
 import cv2
@@ -135,12 +135,13 @@ def viewUsers():
 #add feedback function (user)
 @app.route('/addFeedback',methods=['GET', 'POST'])
 def addFeedback():
+    feedbacks = models.feedback.query.all()
     if request.method == 'POST':
         feedback = models.feedback(user_id=session['user_id'], comment=request.form['comment'], Date=datetime.now())
         db.session.add(feedback)
         db.session.commit()
         return render_template('index.html')
-    return render_template('addFeedback.html')
+    return render_template('addFeedback.html', feedbacks=feedbacks)
 
 #view feedback function (admin)
 @app.route('/viewFeedback',methods=['GET', 'POST'])
@@ -190,8 +191,11 @@ def uploader():
             db.session.commit()
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             filepath = app.config['UPLOAD_FOLDER'] + filename
-            # re = Read_all.ReadAll(filepath)
-            return render_template('service.html')
+            preprocessing_and_predict = preprocessing()
+            result = preprocessing_and_predict.ReadAll(filepath)
+            #result must return 0 ,  1 , 2 , or 3 if return type array or string not work 
+            
+            return render_template('service.html', result=result)
         
     return render_template('service.html')
 
