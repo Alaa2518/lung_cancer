@@ -190,12 +190,14 @@ def uploader():
             db.session.add(CT)
             db.session.commit()
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            filepath = app.config['UPLOAD_FOLDER'] + filename
+            filepath = app.config['UPLOAD_FOLDER'] +'/'+ filename
             preprocessing_and_predict = preprocessing()
             result = preprocessing_and_predict.ReadAll(filepath)
+
             #result must return 0 ,  1 , 2 , or 3 if return type array or string not work 
             
             return render_template('service.html', result=result)
+        
         
     return render_template('service.html')
 
